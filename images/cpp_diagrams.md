@@ -4,21 +4,21 @@ Code-block diagrams referenced from `BucketSorts.cpp`.
 
 ---
 
-## 1. Counting Sort -- Count Array and Placement
-*`BucketSorts.cpp::counting_sort()` -- two passes: tally occurrences, then place directly*
+## 1. Counting Sort -- Code Walkthrough
+*`BucketSorts.cpp::counting_sort()` -- Step 1a: find min/max, Step 1b: allocate count array, Step 1c: tally, Step 2: place*
 
-![Counting Sort -- Count Array and Placement](svgs/counting_sort_step.svg)
-
----
-
-## 2. Bucket Sort -- Distribution and Concatenation
-*`BucketSorts.cpp::bucket_sort()` -- distribute into range-based buckets, sort each, concatenate*
-
-![Bucket Sort -- Distribution and Concatenation](svgs/bucket_sort_step.svg)
+![Counting Sort -- Code Walkthrough](svgs/counting_sort_step.svg)
 
 ---
 
-## 3. Radix Sort -- One Digit Pass
-*`BucketSorts.cpp::radix_sort()` -- extract digit, stable counting sort on that digit, repeat*
+## 2. Bucket Sort -- Code Walkthrough
+*`BucketSorts.cpp::bucket_sort()` -- Step 1a: find range, Step 1b: distribute, Step 2: sort buckets, Step 3: concatenate*
 
-![Radix Sort -- One Digit Pass](svgs/radix_sort_step.svg)
+![Bucket Sort -- Code Walkthrough](svgs/bucket_sort_step.svg)
+
+---
+
+## 3. Radix Sort -- Code Walkthrough
+*`BucketSorts.cpp::radix_sort()` -- Step 0: find max/d/k, then d passes of stable counting sort by digit*
+
+![Radix Sort -- Code Walkthrough](svgs/radix_sort_step.svg)

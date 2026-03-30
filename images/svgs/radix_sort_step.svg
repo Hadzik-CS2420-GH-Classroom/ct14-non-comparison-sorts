@@ -1,50 +1,68 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" font-family="'Segoe UI', Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" font-family="'Segoe UI', Arial, sans-serif">
   <rect width="100%" height="100%" fill="white"/>
 
-  <text x="450" y="28" text-anchor="middle" fill="#1a1a1a" font-size="20" font-weight="bold">Radix Sort &#x2014; One Digit Pass (LSD)</text>
-  <text x="450" y="48" text-anchor="middle" fill="#777" font-size="12">BucketSorts.cpp::radix_sort() &#x2014; extract digit, counting sort on that digit, repeat</text>
+  <text x="450" y="28" text-anchor="middle" fill="#1a1a1a" font-size="20" font-weight="bold">Radix Sort (LSD) &#x2014; Code Walkthrough</text>
+  <text x="450" y="48" text-anchor="middle" fill="#777" font-size="12">BucketSorts.cpp::radix_sort() &#x2014; d passes of stable counting sort, one per digit</text>
 
-  <!-- Code block on left -->
-  <rect x="20" y="64" width="400" height="180" rx="8" fill="#1e1e2e"/>
-  <text x="35" y="86" fill="#6c7086" font-size="11" font-style="italic">// Main loop: one pass per digit</text>
-  <text x="35" y="104" fill="#cba6f7" font-size="11">for</text><text x="55" y="104" fill="#cdd6f4" font-size="11"> (</text><text x="63" y="104" fill="#cba6f7" font-size="11">int</text><text x="83" y="104" fill="#cdd6f4" font-size="11"> exp = </text><text x="117" y="104" fill="#fab387" font-size="11">1</text><text x="125" y="104" fill="#cdd6f4" font-size="11">; max_val / exp &gt; </text><text x="242" y="104" fill="#fab387" font-size="11">0</text><text x="250" y="104" fill="#cdd6f4" font-size="11">; exp *= </text><text x="300" y="104" fill="#fab387" font-size="11">10</text><text x="316" y="104" fill="#cdd6f4" font-size="11">)</text>
-  <text x="50" y="122" fill="#89dceb" font-size="11">counting_sort_by_digit</text><text x="210" y="122" fill="#cdd6f4" font-size="11">(data, exp);</text>
-  <text x="35" y="148" fill="#6c7086" font-size="11" font-style="italic">// Extract digit at position exp:</text>
-  <text x="35" y="166" fill="#cba6f7" font-size="11">int</text><text x="55" y="166" fill="#cdd6f4" font-size="11"> digit = (value / exp) % </text><text x="230" y="166" fill="#fab387" font-size="11">10</text><text x="246" y="166" fill="#cdd6f4" font-size="11">;</text>
-  <text x="35" y="192" fill="#6c7086" font-size="11" font-style="italic">// exp=1: ones digit</text>
-  <text x="35" y="208" fill="#6c7086" font-size="11" font-style="italic">// exp=10: tens digit</text>
-  <text x="35" y="224" fill="#6c7086" font-size="11" font-style="italic">// exp=100: hundreds digit</text>
+  <!-- Code block (left) -->
+  <rect x="20" y="64" width="420" height="340" rx="8" fill="#1e1e2e" stroke="#45475a" stroke-width="1.5"/>
 
-  <!-- Visual: one pass example -->
-  <text x="450" y="82" fill="#6a1b9a" font-size="13" font-weight="bold">Example: Pass 1 (ones digit, exp=1)</text>
-  <text x="450" y="100" fill="#888" font-size="11">Input: [170, 45, 75, 90, 802, 24, 2, 66]</text>
+  <!-- Step 0 highlight -->
+  <rect x="20" y="72" width="420" height="42" fill="#89b4fa18"/>
+  <text x="35" y="88" fill="#89b4fa" font-size="11" font-weight="bold">Step 0: Find max, determine d O(n)</text>
+  <text x="35" y="106" fill="#cdd6f4" font-size="11"><tspan fill="#cba6f7">int</tspan> max_val = *max_element(...);</text>
 
-  <!-- Digit extraction -->
-  <text x="450" y="124" fill="#555" font-size="11">Extract: (value / 1) % 10</text>
-  <text x="450" y="144" fill="#555" font-size="11">170&#x2192;<tspan font-weight="bold" fill="#e74c3c">0</tspan> &#xA0; 45&#x2192;<tspan font-weight="bold" fill="#e74c3c">5</tspan> &#xA0; 75&#x2192;<tspan font-weight="bold" fill="#e74c3c">5</tspan> &#xA0; 90&#x2192;<tspan font-weight="bold" fill="#e74c3c">0</tspan> &#xA0; 802&#x2192;<tspan font-weight="bold" fill="#e74c3c">2</tspan> &#xA0; 24&#x2192;<tspan font-weight="bold" fill="#e74c3c">4</tspan> &#xA0; 2&#x2192;<tspan font-weight="bold" fill="#e74c3c">2</tspan> &#xA0; 66&#x2192;<tspan font-weight="bold" fill="#e74c3c">6</tspan></text>
+  <!-- Main loop highlight -->
+  <rect x="20" y="120" width="420" height="42" fill="#a6e3a118"/>
+  <text x="35" y="136" fill="#a6e3a1" font-size="11" font-weight="bold">Main loop: one pass per digit position</text>
+  <text x="35" y="154" fill="#cdd6f4" font-size="11"><tspan fill="#cba6f7">for</tspan> (<tspan fill="#cba6f7">int</tspan> exp = <tspan fill="#fab387">1</tspan>; max_val / exp &gt; <tspan fill="#fab387">0</tspan>; exp *= <tspan fill="#fab387">10</tspan>)</text>
 
-  <!-- Count by digit (0-9) -->
-  <text x="450" y="170" fill="#555" font-size="11" font-weight="bold">Count by ones digit:</text>
-  <text x="450" y="186" fill="#555" font-size="10">digit: 0  1  2  3  4  5  6  7  8  9</text>
-  <text x="450" y="200" fill="#2e7d32" font-size="10" font-weight="bold">count: 2  0  2  0  1  2  1  0  0  0</text>
+  <!-- Helper highlight -->
+  <rect x="20" y="168" width="420" height="170" fill="#f38ba818"/>
+  <text x="35" y="184" fill="#f38ba8" font-size="11" font-weight="bold">counting_sort_by_digit(data, exp):</text>
+  <text x="35" y="204" fill="#6c7086" font-size="11" font-style="italic">// k = 10 (digits 0-9)</text>
+  <text x="35" y="222" fill="#cdd6f4" font-size="11"><tspan fill="#cba6f7">int</tspan> digit = (data[i] / exp) % <tspan fill="#fab387">10</tspan>;</text>
+  <text x="35" y="240" fill="#cdd6f4" font-size="11">count[digit]++;</text>
+  <text x="35" y="264" fill="#6c7086" font-size="11" font-style="italic">// Convert to cumulative (for stability)</text>
+  <text x="35" y="282" fill="#cdd6f4" font-size="11">count[i] += count[i - <tspan fill="#fab387">1</tspan>];</text>
+  <text x="35" y="306" fill="#6c7086" font-size="11" font-style="italic">// Build output (iterate backwards for stability)</text>
+  <text x="35" y="324" fill="#cdd6f4" font-size="11">output[count[digit] - <tspan fill="#fab387">1</tspan>] = data[i];</text>
+  <text x="35" y="342" fill="#cdd6f4" font-size="11">count[digit]--;</text>
 
-  <!-- Stable sort result -->
-  <text x="450" y="228" fill="#555" font-size="12" font-weight="bold">Stable counting sort by ones digit:</text>
-  <rect x="450" y="238" width="46" height="24" rx="4" fill="#9b59b6"/><text x="473" y="255" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">17<tspan fill="#ff0">0</tspan></text>
-  <rect x="502" y="238" width="46" height="24" rx="4" fill="#9b59b6"/><text x="525" y="255" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">9<tspan fill="#ff0">0</tspan></text>
-  <rect x="554" y="238" width="46" height="24" rx="4" fill="#9b59b6"/><text x="577" y="255" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">80<tspan fill="#ff0">2</tspan></text>
-  <rect x="606" y="238" width="46" height="24" rx="4" fill="#9b59b6"/><text x="629" y="255" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold"><tspan fill="#ff0">2</tspan></text>
-  <rect x="658" y="238" width="46" height="24" rx="4" fill="#9b59b6"/><text x="681" y="255" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">2<tspan fill="#ff0">4</tspan></text>
-  <rect x="710" y="238" width="46" height="24" rx="4" fill="#9b59b6"/><text x="733" y="255" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">4<tspan fill="#ff0">5</tspan></text>
-  <rect x="762" y="238" width="46" height="24" rx="4" fill="#9b59b6"/><text x="785" y="255" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">7<tspan fill="#ff0">5</tspan></text>
-  <rect x="814" y="238" width="46" height="24" rx="4" fill="#9b59b6"/><text x="837" y="255" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">6<tspan fill="#ff0">6</tspan></text>
+  <text x="35" y="376" fill="#6c7086" font-size="11" font-style="italic">// d = digits in max. k = 10 (base).</text>
+  <text x="35" y="392" fill="#6c7086" font-size="11" font-style="italic">// Total: O(d * (n + 10)). Stable: Yes.</text>
 
-  <text x="450" y="284" fill="#888" font-size="11">Ones digits are now in order: 0, 0, 2, 2, 4, 5, 5, 6 &#x2714;</text>
-  <text x="450" y="300" fill="#888" font-size="11">Next pass (exp=10) will sort by tens digit, preserving this ordering via stability.</text>
+  <!-- Visual (right) -->
+  <text x="460" y="82" fill="#6a1b9a" font-size="13" font-weight="bold">Input: [170, 45, 75, 90, 802, 24, 2, 66]</text>
+
+  <rect x="460" y="96" width="410" height="36" rx="6" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="1"/>
+  <text x="470" y="114" fill="#6a1b9a" font-size="11" font-weight="bold">Step 0: max=802, d=3 digits, k=10 (base 10)</text>
+  <text x="470" y="128" fill="#6a1b9a" font-size="10">3 passes: ones (exp=1), tens (exp=10), hundreds (exp=100)</text>
+
+  <rect x="460" y="140" width="410" height="58" rx="6" fill="#ede7f6" stroke="#9b59b6" stroke-width="1"/>
+  <text x="470" y="158" fill="#6a1b9a" font-size="11" font-weight="bold">Pass 1 (ones): digit = value % 10</text>
+  <text x="470" y="176" fill="#555" font-size="10">170&#x2192;0 45&#x2192;5 75&#x2192;5 90&#x2192;0 802&#x2192;2 24&#x2192;4 2&#x2192;2 66&#x2192;6</text>
+  <text x="470" y="192" fill="#888" font-size="10">Result: [170, 90, 802, 2, 24, 45, 75, 66]</text>
+
+  <rect x="460" y="206" width="410" height="58" rx="6" fill="#ede7f6" stroke="#8e44ad" stroke-width="1"/>
+  <text x="470" y="224" fill="#8e44ad" font-size="11" font-weight="bold">Pass 2 (tens): digit = (value / 10) % 10</text>
+  <text x="470" y="242" fill="#555" font-size="10">170&#x2192;7 90&#x2192;9 802&#x2192;0 2&#x2192;0 24&#x2192;2 45&#x2192;4 75&#x2192;7 66&#x2192;6</text>
+  <text x="470" y="258" fill="#888" font-size="10">Result: [802, 2, 24, 45, 66, 170, 75, 90]</text>
+
+  <rect x="460" y="272" width="410" height="58" rx="6" fill="#e8f5e9" stroke="#27ae60" stroke-width="1"/>
+  <text x="470" y="290" fill="#1b5e20" font-size="11" font-weight="bold">Pass 3 (hundreds): digit = (value / 100) % 10</text>
+  <text x="470" y="308" fill="#555" font-size="10">802&#x2192;8 2&#x2192;0 24&#x2192;0 45&#x2192;0 66&#x2192;0 170&#x2192;1 75&#x2192;0 90&#x2192;0</text>
+  <rect x="470" y="314" width="34" height="18" rx="3" fill="#27ae60"/><text x="487" y="328" text-anchor="middle" fill="#fff" font-size="9">2</text>
+  <rect x="507" y="314" width="34" height="18" rx="3" fill="#27ae60"/><text x="524" y="328" text-anchor="middle" fill="#fff" font-size="9">24</text>
+  <rect x="544" y="314" width="34" height="18" rx="3" fill="#27ae60"/><text x="561" y="328" text-anchor="middle" fill="#fff" font-size="9">45</text>
+  <rect x="581" y="314" width="34" height="18" rx="3" fill="#27ae60"/><text x="598" y="328" text-anchor="middle" fill="#fff" font-size="9">66</text>
+  <rect x="618" y="314" width="34" height="18" rx="3" fill="#27ae60"/><text x="635" y="328" text-anchor="middle" fill="#fff" font-size="9">75</text>
+  <rect x="655" y="314" width="34" height="18" rx="3" fill="#27ae60"/><text x="672" y="328" text-anchor="middle" fill="#fff" font-size="9">90</text>
+  <rect x="692" y="314" width="38" height="18" rx="3" fill="#27ae60"/><text x="711" y="328" text-anchor="middle" fill="#fff" font-size="9">170</text>
+  <rect x="733" y="314" width="38" height="18" rx="3" fill="#27ae60"/><text x="752" y="328" text-anchor="middle" fill="#fff" font-size="9">802</text>
 
   <!-- Key insight -->
-  <rect x="20" y="320" width="860" height="86" rx="10" fill="#f4ecf7" stroke="#6a1b9a" stroke-width="1.5"/>
-  <text x="40" y="344" fill="#333" font-size="12">&#x2022; Each pass is just <tspan font-weight="bold">counting sort on one digit</tspan> (k=10 for base 10). Cost per pass: O(n + 10) &#x2248; O(n).</text>
-  <text x="40" y="366" fill="#333" font-size="12">&#x2022; <tspan font-weight="bold">Stability is critical</tspan> &#x2014; if the per-digit sort weren&#x2019;t stable, earlier digit orderings would be destroyed.</text>
-  <text x="40" y="388" fill="#333" font-size="12">&#x2022; After d passes (one per digit), every digit position has been sorted &#x2192; the full numbers are sorted.</text>
+  <rect x="20" y="420" width="860" height="66" rx="10" fill="#f4ecf7" stroke="#6a1b9a" stroke-width="1.5"/>
+  <text x="40" y="444" fill="#333" font-size="12">&#x2022; <tspan font-weight="bold">Stability is critical:</tspan> iterating backwards in the placement step preserves the ordering from previous digit passes.</text>
+  <text x="40" y="466" fill="#333" font-size="12">&#x2022; <tspan font-weight="bold">k is always 10</tspan> (base 10 digits), so O(n + k) per pass is essentially O(n). Total: O(d * n) where d = digits in max.</text>
 </svg>
