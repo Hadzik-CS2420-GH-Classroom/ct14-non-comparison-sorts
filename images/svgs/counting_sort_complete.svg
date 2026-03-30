@@ -165,5 +165,5 @@
   <text x="40" y="846" fill="#333" font-size="12">&#x2022; No element-to-element comparisons &#x2014; just count and place. That&#x2019;s how it beats the O(n log n) lower bound.</text>
   <text x="40" y="868" fill="#333" font-size="12">&#x2022; <tspan font-weight="bold">k depends on the range</tspan> (max - min + 1), not max itself. Here k = 7, not 17. Offset by min to save space.</text>
   <text x="40" y="890" fill="#333" font-size="12">&#x2022; Space is O(k) for the count array. If k is huge (e.g., sorting 100 values with range = 1 billion), counting sort wastes memory.</text>
-  <text x="40" y="912" fill="#333" font-size="12">&#x2022; When k &#x226A; n (small range, many elements), this is essentially O(n) &#x2014; much faster than any comparison sort.</text>
+  <text x="40" y="912" fill="#333" font-size="12">&#x2022; When k is much smaller than n (small range, many elements), this is essentially O(n) &#x2014; much faster than any comparison sort.</text>
 </svg>
