@@ -29,7 +29,7 @@
   <text x="280" y="136" fill="#888" font-size="11">digit = value % 10</text>
 
   <!-- Digit extraction -->
-  <text x="40" y="160" fill="#555" font-size="11">17<tspan font-weight="bold" fill="#e74c3c">0</tspan> &#x2192; 0 &nbsp;&nbsp; 4<tspan font-weight="bold" fill="#e74c3c">5</tspan> &#x2192; 5 &nbsp;&nbsp; 7<tspan font-weight="bold" fill="#e74c3c">5</tspan> &#x2192; 5 &nbsp;&nbsp; 9<tspan font-weight="bold" fill="#e74c3c">0</tspan> &#x2192; 0 &nbsp;&nbsp; 80<tspan font-weight="bold" fill="#e74c3c">2</tspan> &#x2192; 2 &nbsp;&nbsp; 2<tspan font-weight="bold" fill="#e74c3c">4</tspan> &#x2192; 4 &nbsp;&nbsp; <tspan font-weight="bold" fill="#e74c3c">2</tspan> &#x2192; 2 &nbsp;&nbsp; 6<tspan font-weight="bold" fill="#e74c3c">6</tspan> &#x2192; 6</text>
+  <text x="40" y="160" fill="#555" font-size="11">17<tspan font-weight="bold" fill="#e74c3c">0</tspan> &#x2192; 0 &#xA0;&#xA0; 4<tspan font-weight="bold" fill="#e74c3c">5</tspan> &#x2192; 5 &#xA0;&#xA0; 7<tspan font-weight="bold" fill="#e74c3c">5</tspan> &#x2192; 5 &#xA0;&#xA0; 9<tspan font-weight="bold" fill="#e74c3c">0</tspan> &#x2192; 0 &#xA0;&#xA0; 80<tspan font-weight="bold" fill="#e74c3c">2</tspan> &#x2192; 2 &#xA0;&#xA0; 2<tspan font-weight="bold" fill="#e74c3c">4</tspan> &#x2192; 4 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">2</tspan> &#x2192; 2 &#xA0;&#xA0; 6<tspan font-weight="bold" fill="#e74c3c">6</tspan> &#x2192; 6</text>
 
   <!-- Result after pass 1 -->
   <text x="40" y="186" fill="#555" font-size="12" font-weight="bold">After stable sort by ones:</text>
@@ -49,7 +49,7 @@
   <text x="35" y="272" fill="#8e44ad" font-size="14" font-weight="bold">Pass 2: Sort by tens digit</text>
   <text x="280" y="272" fill="#888" font-size="11">digit = (value / 10) % 10</text>
 
-  <text x="40" y="296" fill="#555" font-size="11">1<tspan font-weight="bold" fill="#e74c3c">7</tspan>0 &#x2192; 7 &nbsp;&nbsp; <tspan font-weight="bold" fill="#e74c3c">9</tspan>0 &#x2192; 9 &nbsp;&nbsp; 8<tspan font-weight="bold" fill="#e74c3c">0</tspan>2 &#x2192; 0 &nbsp;&nbsp; <tspan font-weight="bold" fill="#e74c3c">0</tspan>2 &#x2192; 0 &nbsp;&nbsp; <tspan font-weight="bold" fill="#e74c3c">2</tspan>4 &#x2192; 2 &nbsp;&nbsp; <tspan font-weight="bold" fill="#e74c3c">4</tspan>5 &#x2192; 4 &nbsp;&nbsp; <tspan font-weight="bold" fill="#e74c3c">7</tspan>5 &#x2192; 7 &nbsp;&nbsp; <tspan font-weight="bold" fill="#e74c3c">6</tspan>6 &#x2192; 6</text>
+  <text x="40" y="296" fill="#555" font-size="11">1<tspan font-weight="bold" fill="#e74c3c">7</tspan>0 &#x2192; 7 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">9</tspan>0 &#x2192; 9 &#xA0;&#xA0; 8<tspan font-weight="bold" fill="#e74c3c">0</tspan>2 &#x2192; 0 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">0</tspan>2 &#x2192; 0 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">2</tspan>4 &#x2192; 2 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">4</tspan>5 &#x2192; 4 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">7</tspan>5 &#x2192; 7 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">6</tspan>6 &#x2192; 6</text>
 
   <text x="40" y="322" fill="#555" font-size="12" font-weight="bold">After stable sort by tens:</text>
   <rect x="280" y="308" width="46" height="26" rx="4" fill="#8e44ad"/><text x="303" y="326" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">802</text>
@@ -61,14 +61,14 @@
   <rect x="592" y="308" width="46" height="26" rx="4" fill="#8e44ad"/><text x="615" y="326" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">75</text>
   <rect x="644" y="308" width="46" height="26" rx="4" fill="#8e44ad"/><text x="667" y="326" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">90</text>
 
-  <text x="40" y="366" fill="#888" font-size="11">Tens digits in order: 0, 0, 2, 4, 6, 7, 7, 9 &#x2714; &nbsp;&nbsp;(stability preserved ones-digit ordering within same tens digit)</text>
+  <text x="40" y="366" fill="#888" font-size="11">Tens digits in order: 0, 0, 2, 4, 6, 7, 7, 9 &#x2714; &#xA0;&#xA0;(stability preserved ones-digit ordering within same tens digit)</text>
 
   <!-- PASS 3: Hundreds digit -->
   <rect x="20" y="386" width="860" height="130" rx="8" fill="#fff" stroke="#4a148c" stroke-width="1.5"/>
   <text x="35" y="408" fill="#4a148c" font-size="14" font-weight="bold">Pass 3: Sort by hundreds digit</text>
   <text x="300" y="408" fill="#888" font-size="11">digit = (value / 100) % 10</text>
 
-  <text x="40" y="432" fill="#555" font-size="11"><tspan font-weight="bold" fill="#e74c3c">8</tspan>02 &#x2192; 8 &nbsp;&nbsp; <tspan font-weight="bold" fill="#e74c3c">0</tspan>02 &#x2192; 0 &nbsp;&nbsp; <tspan font-weight="bold" fill="#e74c3c">0</tspan>24 &#x2192; 0 &nbsp;&nbsp; <tspan font-weight="bold" fill="#e74c3c">0</tspan>45 &#x2192; 0 &nbsp;&nbsp; <tspan font-weight="bold" fill="#e74c3c">0</tspan>66 &#x2192; 0 &nbsp;&nbsp; <tspan font-weight="bold" fill="#e74c3c">1</tspan>70 &#x2192; 1 &nbsp;&nbsp; <tspan font-weight="bold" fill="#e74c3c">0</tspan>75 &#x2192; 0 &nbsp;&nbsp; <tspan font-weight="bold" fill="#e74c3c">0</tspan>90 &#x2192; 0</text>
+  <text x="40" y="432" fill="#555" font-size="11"><tspan font-weight="bold" fill="#e74c3c">8</tspan>02 &#x2192; 8 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">0</tspan>02 &#x2192; 0 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">0</tspan>24 &#x2192; 0 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">0</tspan>45 &#x2192; 0 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">0</tspan>66 &#x2192; 0 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">1</tspan>70 &#x2192; 1 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">0</tspan>75 &#x2192; 0 &#xA0;&#xA0; <tspan font-weight="bold" fill="#e74c3c">0</tspan>90 &#x2192; 0</text>
 
   <text x="40" y="458" fill="#555" font-size="12" font-weight="bold">After stable sort by hundreds:</text>
   <rect x="310" y="444" width="42" height="26" rx="4" fill="#27ae60"/><text x="331" y="462" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">2</text>

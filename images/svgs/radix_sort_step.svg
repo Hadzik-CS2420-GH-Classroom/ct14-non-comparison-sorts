@@ -21,7 +21,7 @@
 
   <!-- Digit extraction -->
   <text x="450" y="124" fill="#555" font-size="11">Extract: (value / 1) % 10</text>
-  <text x="450" y="144" fill="#555" font-size="11">170&#x2192;<tspan font-weight="bold" fill="#e74c3c">0</tspan> &nbsp; 45&#x2192;<tspan font-weight="bold" fill="#e74c3c">5</tspan> &nbsp; 75&#x2192;<tspan font-weight="bold" fill="#e74c3c">5</tspan> &nbsp; 90&#x2192;<tspan font-weight="bold" fill="#e74c3c">0</tspan> &nbsp; 802&#x2192;<tspan font-weight="bold" fill="#e74c3c">2</tspan> &nbsp; 24&#x2192;<tspan font-weight="bold" fill="#e74c3c">4</tspan> &nbsp; 2&#x2192;<tspan font-weight="bold" fill="#e74c3c">2</tspan> &nbsp; 66&#x2192;<tspan font-weight="bold" fill="#e74c3c">6</tspan></text>
+  <text x="450" y="144" fill="#555" font-size="11">170&#x2192;<tspan font-weight="bold" fill="#e74c3c">0</tspan> &#xA0; 45&#x2192;<tspan font-weight="bold" fill="#e74c3c">5</tspan> &#xA0; 75&#x2192;<tspan font-weight="bold" fill="#e74c3c">5</tspan> &#xA0; 90&#x2192;<tspan font-weight="bold" fill="#e74c3c">0</tspan> &#xA0; 802&#x2192;<tspan font-weight="bold" fill="#e74c3c">2</tspan> &#xA0; 24&#x2192;<tspan font-weight="bold" fill="#e74c3c">4</tspan> &#xA0; 2&#x2192;<tspan font-weight="bold" fill="#e74c3c">2</tspan> &#xA0; 66&#x2192;<tspan font-weight="bold" fill="#e74c3c">6</tspan></text>
 
   <!-- Count by digit (0-9) -->
   <text x="450" y="170" fill="#555" font-size="11" font-weight="bold">Count by ones digit:</text>
