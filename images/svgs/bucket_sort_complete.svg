@@ -35,7 +35,7 @@
   <text x="35" y="216" fill="#555" font-size="11">Fewer buckets = less memory but bigger buckets to sort. Common choices: n, sqrt(n), or a fixed number like 10.</text>
 
   <!-- ===== STEP 1b: Distribute element by element ===== -->
-  <rect x="20" y="274" width="860" height="200" rx="8" fill="#fff" stroke="#e65100" stroke-width="1.5"/>
+  <rect x="20" y="236" width="860" height="260" rx="8" fill="#fff" stroke="#e65100" stroke-width="1.5"/>
   <text x="35" y="258" fill="#e65100" font-size="14" font-weight="bold">Step 1b: Distribute into buckets</text>
   <text x="280" y="258" fill="#888" font-size="11">For each element: bucket_index = (value - min) / range_per_bucket. O(n)</text>
 
