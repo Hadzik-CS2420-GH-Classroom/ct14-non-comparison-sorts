@@ -1,63 +1,78 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" font-family="'Segoe UI', Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" font-family="'Segoe UI', Arial, sans-serif">
   <rect width="100%" height="100%" fill="white"/>
 
-  <text x="450" y="28" text-anchor="middle" fill="#1a1a1a" font-size="20" font-weight="bold">Bucket Sort &#x2014; Code Walkthrough</text>
-  <text x="450" y="48" text-anchor="middle" fill="#777" font-size="12">BucketSorts.cpp::bucket_sort() &#x2014; distribute, sort each bucket, concatenate</text>
+  <text x="450" y="28" text-anchor="middle" fill="#1a1a1a" font-size="20" font-weight="bold">Bucket Sort &#x2014; Steps 1a, 1b (Distribution Phase)</text>
+  <text x="450" y="48" text-anchor="middle" fill="#777" font-size="12">BucketSorts.cpp::bucket_sort() &#x2014; find range, compute buckets, distribute elements</text>
 
   <!-- Code block (left) -->
-  <rect x="20" y="64" width="420" height="320" rx="8" fill="#1e1e2e" stroke="#45475a" stroke-width="1.5"/>
+  <rect x="20" y="64" width="380" height="200" rx="8" fill="#1e1e2e" stroke="#45475a" stroke-width="1.5"/>
 
-  <rect x="20" y="72" width="420" height="58" fill="#89b4fa18"/>
-  <text x="35" y="88" fill="#89b4fa" font-size="11" font-weight="bold">Step 1a: Find range, compute range_per_bucket O(n)</text>
+  <rect x="20" y="72" width="380" height="72" fill="#89b4fa18"/>
+  <text x="35" y="88" fill="#89b4fa" font-size="11" font-weight="bold">Step 1a: Find range, compute buckets O(n)</text>
   <text x="35" y="106" fill="#cdd6f4" font-size="11"><tspan fill="#cba6f7">int</tspan> min_val = *min_element(...);</text>
-  <text x="35" y="122" fill="#cdd6f4" font-size="11"><tspan fill="#cba6f7">int</tspan> range_per_bucket = ceil(range / num_buckets);</text>
+  <text x="35" y="122" fill="#cdd6f4" font-size="11"><tspan fill="#cba6f7">int</tspan> max_val = *max_element(...);</text>
+  <text x="35" y="138" fill="#cdd6f4" font-size="11"><tspan fill="#cba6f7">int</tspan> range_per_bucket = ceil(range / num_buckets);</text>
 
-  <rect x="20" y="136" width="420" height="56" fill="#f38ba818"/>
-  <text x="35" y="152" fill="#f38ba8" font-size="11" font-weight="bold">Step 1b: Distribute into buckets O(n)</text>
-  <text x="35" y="170" fill="#cdd6f4" font-size="11"><tspan fill="#cba6f7">for</tspan> (<tspan fill="#cba6f7">int</tspan> val : data)</text>
-  <text x="50" y="186" fill="#cdd6f4" font-size="11">buckets[(val - min) / range_per_bucket].push_back(val);</text>
+  <rect x="20" y="150" width="380" height="60" fill="#f38ba818"/>
+  <text x="35" y="166" fill="#f38ba8" font-size="11" font-weight="bold">Step 1b: Distribute into buckets O(n)</text>
+  <text x="35" y="184" fill="#cdd6f4" font-size="11"><tspan fill="#cba6f7">for</tspan> (<tspan fill="#cba6f7">int</tspan> val : data) {</text>
+  <text x="50" y="202" fill="#cdd6f4" font-size="11"><tspan fill="#cba6f7">int</tspan> idx = (val - min_val) / range_per_bucket;</text>
+  <text x="50" y="218" fill="#cdd6f4" font-size="11">buckets[idx].push_back(val);</text>
 
-  <rect x="20" y="198" width="420" height="60" fill="#a6e3a118"/>
-  <text x="35" y="214" fill="#a6e3a1" font-size="11" font-weight="bold">Step 2: Sort each bucket O(n&#xB2;/k)</text>
-  <text x="35" y="232" fill="#cdd6f4" font-size="11"><tspan fill="#cba6f7">for</tspan> (<tspan fill="#cba6f7">auto</tspan>&amp; bucket : buckets)</text>
-  <text x="50" y="248" fill="#cdd6f4" font-size="11">sort(bucket.begin(), bucket.end());</text>
+  <text x="35" y="248" fill="#6c7086" font-size="11" font-style="italic">// num_buckets chosen by programmer (here: 3)</text>
+  <text x="35" y="262" fill="#6c7086" font-size="11" font-style="italic">// Integer division maps value to bucket index</text>
 
-  <rect x="20" y="264" width="420" height="60" fill="#fab38718"/>
-  <text x="35" y="280" fill="#fab387" font-size="11" font-weight="bold">Step 3: Concatenate O(n)</text>
-  <text x="35" y="298" fill="#cdd6f4" font-size="11"><tspan fill="#cba6f7">for</tspan> (<tspan fill="#cba6f7">int</tspan> val : bucket)</text>
-  <text x="50" y="316" fill="#cdd6f4" font-size="11">data[idx++] = val;</text>
+  <!-- Right panel -->
+  <text x="420" y="82" fill="#1565c0" font-size="13" font-weight="bold">Input: [42, 15, 73, 28, 91, 5]</text>
 
-  <text x="35" y="350" fill="#6c7086" font-size="11" font-style="italic">// num_buckets is chosen by programmer (not computed)</text>
-  <text x="35" y="366" fill="#6c7086" font-size="11" font-style="italic">// Total: O(n + k) avg when data distributes evenly</text>
+  <!-- 1a result -->
+  <rect x="420" y="96" width="460" height="46" rx="6" fill="#eaf4fb" stroke="#5dade2" stroke-width="1"/>
+  <text x="430" y="116" fill="#2980b9" font-size="12" font-weight="bold">1a: min=5, max=91, num_buckets=3</text>
+  <text x="430" y="134" fill="#555" font-size="11">range_per_bucket = ceil((91-5+1) / 3) = ceil(87/3) = <tspan font-weight="bold" fill="#c62828">29</tspan></text>
+  <text x="700" y="134" fill="#888" font-size="10">Ranges: [5-33] [34-62] [63-91]</text>
 
-  <!-- Visual (right) -->
-  <text x="460" y="82" fill="#1565c0" font-size="13" font-weight="bold">Input: [42, 15, 73, 28, 91, 5]</text>
+  <!-- 1b distribution table -->
+  <rect x="420" y="150" width="460" height="210" rx="6" fill="#fef9e7" stroke="#e67e22" stroke-width="1"/>
+  <text x="430" y="170" fill="#e67e22" font-size="12" font-weight="bold">1b: Distribute each element</text>
 
-  <rect x="460" y="96" width="410" height="36" rx="6" fill="#eaf4fb" stroke="#5dade2" stroke-width="1"/>
-  <text x="470" y="114" fill="#2980b9" font-size="11" font-weight="bold">1a: min=5, max=91, 3 buckets, range_per_bucket=29</text>
-  <text x="470" y="128" fill="#2980b9" font-size="10">Ranges: [5-33], [34-62], [63-91]</text>
+  <!-- Column headers -->
+  <text x="430" y="190" fill="#555" font-size="10" font-weight="bold">Element</text>
+  <text x="500" y="190" fill="#555" font-size="10" font-weight="bold">(val - min) / range_per_bucket</text>
+  <text x="730" y="190" fill="#555" font-size="10" font-weight="bold">Bucket</text>
 
-  <rect x="460" y="140" width="410" height="78" rx="6" fill="#fef9e7" stroke="#e67e22" stroke-width="1"/>
-  <text x="470" y="158" fill="#e67e22" font-size="11" font-weight="bold">1b: Distribute (bucket_index formula)</text>
-  <text x="470" y="176" fill="#555" font-size="10">42: (42-5)/29=1 B1 | 15: (15-5)/29=0 B0 | 73: (73-5)/29=2 B2</text>
-  <text x="470" y="192" fill="#555" font-size="10">28: (28-5)/29=0 B0 | 91: (91-5)/29=2 B2 | 5: (5-5)/29=0 B0</text>
-  <text x="470" y="210" fill="#888" font-size="10">B0: [15, 28, 5] | B1: [42] | B2: [73, 91]</text>
+  <text x="430" y="210" fill="#1565c0" font-size="11" font-weight="bold">42</text>
+  <text x="500" y="210" fill="#555" font-size="11">(42 - 5) / 29 = 37 / 29 = <tspan fill="#e65100" font-weight="bold">1</tspan></text>
+  <text x="730" y="210" fill="#e65100" font-size="11">B1 (34-62)</text>
 
-  <rect x="460" y="226" width="410" height="40" rx="6" fill="#e8f5e9" stroke="#27ae60" stroke-width="1"/>
-  <text x="470" y="244" fill="#1b5e20" font-size="11" font-weight="bold">Step 2: Sort each bucket</text>
-  <text x="470" y="260" fill="#555" font-size="10">B0: [5, 15, 28] | B1: [42] | B2: [73, 91]</text>
+  <text x="430" y="230" fill="#1565c0" font-size="11" font-weight="bold">15</text>
+  <text x="500" y="230" fill="#555" font-size="11">(15 - 5) / 29 = 10 / 29 = <tspan fill="#e65100" font-weight="bold">0</tspan></text>
+  <text x="730" y="230" fill="#e65100" font-size="11">B0 (5-33)</text>
 
-  <rect x="460" y="274" width="410" height="44" rx="6" fill="#fff3e0" stroke="#e65100" stroke-width="1"/>
-  <text x="470" y="292" fill="#e65100" font-size="11" font-weight="bold">Step 3: Concatenate</text>
-  <rect x="470" y="298" width="34" height="18" rx="3" fill="#27ae60"/><text x="487" y="312" text-anchor="middle" fill="#fff" font-size="10">5</text>
-  <rect x="508" y="298" width="34" height="18" rx="3" fill="#27ae60"/><text x="525" y="312" text-anchor="middle" fill="#fff" font-size="10">15</text>
-  <rect x="546" y="298" width="34" height="18" rx="3" fill="#27ae60"/><text x="563" y="312" text-anchor="middle" fill="#fff" font-size="10">28</text>
-  <rect x="584" y="298" width="34" height="18" rx="3" fill="#27ae60"/><text x="601" y="312" text-anchor="middle" fill="#fff" font-size="10">42</text>
-  <rect x="622" y="298" width="34" height="18" rx="3" fill="#27ae60"/><text x="639" y="312" text-anchor="middle" fill="#fff" font-size="10">73</text>
-  <rect x="660" y="298" width="34" height="18" rx="3" fill="#27ae60"/><text x="677" y="312" text-anchor="middle" fill="#fff" font-size="10">91</text>
+  <text x="430" y="250" fill="#1565c0" font-size="11" font-weight="bold">73</text>
+  <text x="500" y="250" fill="#555" font-size="11">(73 - 5) / 29 = 68 / 29 = <tspan fill="#e65100" font-weight="bold">2</tspan></text>
+  <text x="730" y="250" fill="#e65100" font-size="11">B2 (63-91)</text>
+
+  <text x="430" y="270" fill="#1565c0" font-size="11" font-weight="bold">28</text>
+  <text x="500" y="270" fill="#555" font-size="11">(28 - 5) / 29 = 23 / 29 = <tspan fill="#e65100" font-weight="bold">0</tspan></text>
+  <text x="730" y="270" fill="#e65100" font-size="11">B0</text>
+
+  <text x="430" y="290" fill="#1565c0" font-size="11" font-weight="bold">91</text>
+  <text x="500" y="290" fill="#555" font-size="11">(91 - 5) / 29 = 86 / 29 = <tspan fill="#e65100" font-weight="bold">2</tspan></text>
+  <text x="730" y="290" fill="#e65100" font-size="11">B2</text>
+
+  <text x="430" y="310" fill="#1565c0" font-size="11" font-weight="bold">5</text>
+  <text x="500" y="310" fill="#555" font-size="11">(5 - 5) / 29 = 0 / 29 = <tspan fill="#e65100" font-weight="bold">0</tspan></text>
+  <text x="730" y="310" fill="#e65100" font-size="11">B0</text>
+
+  <!-- Bucket state -->
+  <text x="430" y="346" fill="#1565c0" font-size="11" font-weight="bold">B0: [15, 28, 5]</text>
+  <text x="600" y="346" fill="#1565c0" font-size="11" font-weight="bold">B1: [42]</text>
+  <text x="720" y="346" fill="#1565c0" font-size="11" font-weight="bold">B2: [73, 91]</text>
 
   <!-- Key insight -->
-  <rect x="20" y="400" width="860" height="66" rx="10" fill="#f4ecf7" stroke="#6a1b9a" stroke-width="1.5"/>
-  <text x="40" y="424" fill="#333" font-size="12">&#x2022; <tspan font-weight="bold">Bucket index = (value - min) / range_per_bucket.</tspan> Integer division maps each element to exactly one bucket.</text>
-  <text x="40" y="446" fill="#333" font-size="12">&#x2022; <tspan font-weight="bold">Stability depends on per-bucket sort.</tspan> std::sort is not stable; use insertion sort or std::stable_sort for stability.</text>
+  <rect x="20" y="376" width="860" height="50" rx="10" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="1.5"/>
+  <text x="450" y="406" text-anchor="middle" fill="#333" font-size="12">After distribution: each bucket contains elements within its value range. Buckets are <tspan font-weight="bold">unsorted internally</tspan>.</text>
+
+  <rect x="20" y="440" width="860" height="36" rx="8" fill="#e3f2fd" stroke="#1565c0" stroke-width="1"/>
+  <text x="450" y="464" text-anchor="middle" fill="#1565c0" font-size="13" font-weight="bold">&#x2192; Continues in: Bucket Sort Steps 2-3 (Sort + Concatenate)</text>
 </svg>

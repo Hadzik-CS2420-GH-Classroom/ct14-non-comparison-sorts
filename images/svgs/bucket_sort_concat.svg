@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" font-family="'Segoe UI', Arial, sans-serif">
+  <rect width="100%" height="100%" fill="white"/>
+
+  <text x="450" y="28" text-anchor="middle" fill="#1a1a1a" font-size="20" font-weight="bold">Bucket Sort &#x2014; Steps 2-3 (Sort + Concatenate)</text>
+  <text x="450" y="48" text-anchor="middle" fill="#777" font-size="12">BucketSorts.cpp::bucket_sort() &#x2014; sort each bucket, then concatenate into output</text>
+
+  <!-- Code block (left) -->
+  <rect x="20" y="64" width="380" height="180" rx="8" fill="#1e1e2e" stroke="#45475a" stroke-width="1.5"/>
+
+  <rect x="20" y="72" width="380" height="60" fill="#a6e3a118"/>
+  <text x="35" y="88" fill="#a6e3a1" font-size="11" font-weight="bold">Step 2: Sort each bucket O(n&#xB2;/k)</text>
+  <text x="35" y="106" fill="#cdd6f4" font-size="11"><tspan fill="#cba6f7">for</tspan> (<tspan fill="#cba6f7">auto</tspan>&amp; bucket : buckets)</text>
+  <text x="50" y="122" fill="#cdd6f4" font-size="11">sort(bucket.begin(), bucket.end());</text>
+
+  <rect x="20" y="138" width="380" height="60" fill="#fab38718"/>
+  <text x="35" y="154" fill="#fab387" font-size="11" font-weight="bold">Step 3: Concatenate O(n)</text>
+  <text x="35" y="172" fill="#cdd6f4" font-size="11"><tspan fill="#cba6f7">for</tspan> (<tspan fill="#cba6f7">int</tspan> val : bucket)</text>
+  <text x="50" y="188" fill="#cdd6f4" font-size="11">data[idx++] = val;</text>
+
+  <text x="35" y="226" fill="#6c7086" font-size="11" font-style="italic">// Buckets are small, so O(n&#xB2;) per bucket</text>
+  <text x="35" y="240" fill="#6c7086" font-size="11" font-style="italic">// is just a few operations. Total: O(n&#xB2;/k).</text>
+
+  <!-- Right panel -->
+  <!-- Before sorting -->
+  <text x="420" y="82" fill="#1565c0" font-size="12" font-weight="bold">Before Step 2 (unsorted buckets):</text>
+  <rect x="420" y="92" width="200" height="36" rx="6" fill="#e3f2fd" stroke="#1565c0" stroke-width="1"/>
+  <text x="430" y="108" fill="#1565c0" font-size="11" font-weight="bold">B0:</text>
+  <rect x="460" y="98" width="30" height="18" rx="3" fill="#1565c0"/><text x="475" y="112" text-anchor="middle" fill="#fff" font-size="10">15</text>
+  <rect x="494" y="98" width="30" height="18" rx="3" fill="#1565c0"/><text x="509" y="112" text-anchor="middle" fill="#fff" font-size="10">28</text>
+  <rect x="528" y="98" width="30" height="18" rx="3" fill="#1565c0"/><text x="543" y="112" text-anchor="middle" fill="#fff" font-size="10">5</text>
+
+  <rect x="630" y="92" width="100" height="36" rx="6" fill="#e3f2fd" stroke="#1565c0" stroke-width="1"/>
+  <text x="640" y="108" fill="#1565c0" font-size="11" font-weight="bold">B1:</text>
+  <rect x="666" y="98" width="30" height="18" rx="3" fill="#1565c0"/><text x="681" y="112" text-anchor="middle" fill="#fff" font-size="10">42</text>
+
+  <rect x="740" y="92" width="130" height="36" rx="6" fill="#e3f2fd" stroke="#1565c0" stroke-width="1"/>
+  <text x="750" y="108" fill="#1565c0" font-size="11" font-weight="bold">B2:</text>
+  <rect x="776" y="98" width="30" height="18" rx="3" fill="#1565c0"/><text x="791" y="112" text-anchor="middle" fill="#fff" font-size="10">73</text>
+  <rect x="810" y="98" width="30" height="18" rx="3" fill="#1565c0"/><text x="825" y="112" text-anchor="middle" fill="#fff" font-size="10">91</text>
+
+  <!-- After sorting -->
+  <text x="420" y="152" fill="#e65100" font-size="12" font-weight="bold">After Step 2 (sorted buckets):</text>
+  <rect x="420" y="162" width="200" height="36" rx="6" fill="#fff3e0" stroke="#e65100" stroke-width="1"/>
+  <text x="430" y="178" fill="#e65100" font-size="11" font-weight="bold">B0:</text>
+  <rect x="460" y="168" width="30" height="18" rx="3" fill="#e65100"/><text x="475" y="182" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">5</text>
+  <rect x="494" y="168" width="30" height="18" rx="3" fill="#e65100"/><text x="509" y="182" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">15</text>
+  <rect x="528" y="168" width="30" height="18" rx="3" fill="#e65100"/><text x="543" y="182" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">28</text>
+
+  <rect x="630" y="162" width="100" height="36" rx="6" fill="#fff3e0" stroke="#e65100" stroke-width="1"/>
+  <text x="640" y="178" fill="#e65100" font-size="11" font-weight="bold">B1:</text>
+  <rect x="666" y="168" width="30" height="18" rx="3" fill="#e65100"/><text x="681" y="182" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">42</text>
+
+  <rect x="740" y="162" width="130" height="36" rx="6" fill="#fff3e0" stroke="#e65100" stroke-width="1"/>
+  <text x="750" y="178" fill="#e65100" font-size="11" font-weight="bold">B2:</text>
+  <rect x="776" y="168" width="30" height="18" rx="3" fill="#e65100"/><text x="791" y="182" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">73</text>
+  <rect x="810" y="168" width="30" height="18" rx="3" fill="#e65100"/><text x="825" y="182" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">91</text>
+
+  <!-- Concatenation -->
+  <text x="420" y="222" fill="#27ae60" font-size="12" font-weight="bold">Step 3: Concatenate B0 + B1 + B2:</text>
+  <rect x="420" y="232" width="42" height="24" rx="4" fill="#27ae60"/><text x="441" y="249" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">5</text>
+  <rect x="468" y="232" width="42" height="24" rx="4" fill="#27ae60"/><text x="489" y="249" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">15</text>
+  <rect x="516" y="232" width="42" height="24" rx="4" fill="#27ae60"/><text x="537" y="249" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">28</text>
+  <rect x="564" y="232" width="42" height="24" rx="4" fill="#27ae60"/><text x="585" y="249" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">42</text>
+  <rect x="612" y="232" width="42" height="24" rx="4" fill="#27ae60"/><text x="633" y="249" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">73</text>
+  <rect x="660" y="232" width="42" height="24" rx="4" fill="#27ae60"/><text x="681" y="249" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">91</text>
+  <text x="720" y="249" fill="#27ae60" font-size="12" font-weight="bold">sorted!</text>
+
+  <!-- Key insights -->
+  <rect x="20" y="280" width="860" height="106" rx="10" fill="#f4ecf7" stroke="#6a1b9a" stroke-width="1.5"/>
+  <text x="40" y="304" fill="#333" font-size="12">&#x2022; <tspan font-weight="bold">Each bucket is small</tspan> (~n/k elements). Insertion sort on 2-3 elements is just a few comparisons, not a real O(n&#xB2;) problem.</text>
+  <text x="40" y="326" fill="#333" font-size="12">&#x2022; <tspan font-weight="bold">Concatenation is just copying:</tspan> walk each bucket in order, write elements back to data[]. O(n) total.</text>
+  <text x="40" y="348" fill="#333" font-size="12">&#x2022; <tspan font-weight="bold">Bucket order = sorted order:</tspan> B0 has the smallest values, B1 the next, B2 the largest. Concatenating in order produces the sorted array.</text>
+  <text x="40" y="370" fill="#333" font-size="12">&#x2022; <tspan font-weight="bold">Worst case:</tspan> all elements in one bucket = insertion sort on all n elements = O(n&#xB2;). Requires uniform distribution to avoid this.</text>
+</svg>

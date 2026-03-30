@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" font-family="'Segoe UI', Arial, sans-serif">
+  <rect width="100%" height="100%" fill="white"/>
+
+  <text x="450" y="28" text-anchor="middle" fill="#1a1a1a" font-size="20" font-weight="bold">Counting Sort &#x2014; Step 2 (Placement Phase)</text>
+  <text x="450" y="48" text-anchor="middle" fill="#777" font-size="12">BucketSorts.cpp::counting_sort() &#x2014; walk the count array left-to-right, write sorted values</text>
+
+  <!-- Code block (left) -->
+  <rect x="20" y="64" width="380" height="180" rx="8" fill="#1e1e2e" stroke="#45475a" stroke-width="1.5"/>
+
+  <rect x="20" y="72" width="380" height="120" fill="#fab38718"/>
+  <text x="35" y="88" fill="#fab387" font-size="11" font-weight="bold">Step 2: Place elements using counts O(n + k)</text>
+  <text x="35" y="110" fill="#cdd6f4" font-size="11"><tspan fill="#cba6f7">int</tspan> idx = <tspan fill="#fab387">0</tspan>;</text>
+  <text x="35" y="130" fill="#cdd6f4" font-size="11"><tspan fill="#cba6f7">for</tspan> (<tspan fill="#cba6f7">int</tspan> i = <tspan fill="#fab387">0</tspan>; i &lt; k; ++i) {</text>
+  <text x="50" y="150" fill="#cdd6f4" font-size="11"><tspan fill="#cba6f7">while</tspan> (count[i]-- &gt; <tspan fill="#fab387">0</tspan>) {</text>
+  <text x="65" y="170" fill="#cdd6f4" font-size="11">data[idx++] = i + min_val;</text>
+  <text x="50" y="186" fill="#cdd6f4" font-size="11">}</text>
+  <text x="35" y="200" fill="#cdd6f4" font-size="11">}</text>
+
+  <text x="35" y="228" fill="#6c7086" font-size="11" font-style="italic">// i loops over count array indices (0..k-1)</text>
+  <text x="35" y="242" fill="#6c7086" font-size="11" font-style="italic">// i + min_val converts index back to value</text>
+
+  <!-- Right panel -->
+  <!-- Starting state -->
+  <text x="420" y="82" fill="#555" font-size="12" font-weight="bold">Starting count array (from Step 1c):</text>
+  <text x="420" y="100" fill="#888" font-size="10">val:  11  12  13  14  15  16  17</text>
+  <text x="420" y="114" fill="#888" font-size="10">idx:   0   1   2   3   4   5   6</text>
+  <rect x="420" y="118" width="30" height="20" rx="3" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1"/><text x="435" y="133" text-anchor="middle" fill="#2e7d32" font-size="10" font-weight="bold">1</text>
+  <rect x="454" y="118" width="30" height="20" rx="3" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1"/><text x="469" y="133" text-anchor="middle" fill="#2e7d32" font-size="10" font-weight="bold">2</text>
+  <rect x="488" y="118" width="30" height="20" rx="3" fill="#f5f5f5" stroke="#bbb" stroke-width="1"/><text x="503" y="133" text-anchor="middle" fill="#bbb" font-size="10">0</text>
+  <rect x="522" y="118" width="30" height="20" rx="3" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1"/><text x="537" y="133" text-anchor="middle" fill="#2e7d32" font-size="10" font-weight="bold">2</text>
+  <rect x="556" y="118" width="30" height="20" rx="3" fill="#f5f5f5" stroke="#bbb" stroke-width="1"/><text x="571" y="133" text-anchor="middle" fill="#bbb" font-size="10">0</text>
+  <rect x="590" y="118" width="30" height="20" rx="3" fill="#f5f5f5" stroke="#bbb" stroke-width="1"/><text x="605" y="133" text-anchor="middle" fill="#bbb" font-size="10">0</text>
+  <rect x="624" y="118" width="30" height="20" rx="3" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1"/><text x="639" y="133" text-anchor="middle" fill="#2e7d32" font-size="10" font-weight="bold">1</text>
+
+  <!-- Step-by-step placement -->
+  <rect x="420" y="148" width="460" height="230" rx="6" fill="#fff" stroke="#e65100" stroke-width="1.5"/>
+  <text x="430" y="168" fill="#e65100" font-size="12" font-weight="bold">Walk count array left-to-right, placing each value count[i] times:</text>
+
+  <!-- i=0: value 11, count=1 -->
+  <text x="430" y="192" fill="#555" font-size="11">i=0: value = 0+11 = <tspan font-weight="bold" fill="#1565c0">11</tspan>, count[0] = 1, write once</text>
+  <rect x="700" y="180" width="34" height="18" rx="3" fill="#27ae60"/><text x="717" y="194" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">11</text>
+
+  <!-- i=1: value 12, count=2 -->
+  <text x="430" y="216" fill="#555" font-size="11">i=1: value = 1+11 = <tspan font-weight="bold" fill="#1565c0">12</tspan>, count[1] = 2, write twice</text>
+  <rect x="700" y="204" width="34" height="18" rx="3" fill="#27ae60"/><text x="717" y="218" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">12</text>
+  <rect x="738" y="204" width="34" height="18" rx="3" fill="#27ae60"/><text x="755" y="218" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">12</text>
+
+  <!-- i=2: value 13, count=0 -->
+  <text x="430" y="240" fill="#bbb" font-size="11">i=2: value = 2+11 = 13, count[2] = 0, <tspan font-style="italic">skip</tspan></text>
+
+  <!-- i=3: value 14, count=2 -->
+  <text x="430" y="264" fill="#555" font-size="11">i=3: value = 3+11 = <tspan font-weight="bold" fill="#1565c0">14</tspan>, count[3] = 2, write twice</text>
+  <rect x="700" y="252" width="34" height="18" rx="3" fill="#27ae60"/><text x="717" y="266" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">14</text>
+  <rect x="738" y="252" width="34" height="18" rx="3" fill="#27ae60"/><text x="755" y="266" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">14</text>
+
+  <!-- i=4,5: skip -->
+  <text x="430" y="288" fill="#bbb" font-size="11">i=4: count=0, skip | i=5: count=0, skip</text>
+
+  <!-- i=6: value 17, count=1 -->
+  <text x="430" y="312" fill="#555" font-size="11">i=6: value = 6+11 = <tspan font-weight="bold" fill="#1565c0">17</tspan>, count[6] = 1, write once</text>
+  <rect x="700" y="300" width="34" height="18" rx="3" fill="#27ae60"/><text x="717" y="314" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">17</text>
+
+  <!-- Final result -->
+  <text x="430" y="340" fill="#27ae60" font-size="12" font-weight="bold">Result:</text>
+  <rect x="500" y="328" width="38" height="22" rx="4" fill="#27ae60"/><text x="519" y="344" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">11</text>
+  <rect x="542" y="328" width="38" height="22" rx="4" fill="#27ae60"/><text x="561" y="344" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">12</text>
+  <rect x="584" y="328" width="38" height="22" rx="4" fill="#27ae60"/><text x="603" y="344" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">12</text>
+  <rect x="626" y="328" width="38" height="22" rx="4" fill="#27ae60"/><text x="645" y="344" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">14</text>
+  <rect x="668" y="328" width="38" height="22" rx="4" fill="#27ae60"/><text x="687" y="344" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">14</text>
+  <rect x="710" y="328" width="38" height="22" rx="4" fill="#27ae60"/><text x="729" y="344" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">17</text>
+  <text x="760" y="344" fill="#27ae60" font-size="11" font-weight="bold">sorted!</text>
+
+  <!-- Key insights -->
+  <rect x="20" y="396" width="860" height="70" rx="10" fill="#f4ecf7" stroke="#6a1b9a" stroke-width="1.5"/>
+  <text x="40" y="420" fill="#333" font-size="12">&#x2022; <tspan font-weight="bold">i + min_val</tspan> converts the count array index back to the original value. Index 3 becomes 3 + 11 = 14.</text>
+  <text x="40" y="442" fill="#333" font-size="12">&#x2022; <tspan font-weight="bold">Zero counts are free:</tspan> the while loop body never runs for count[i]=0, so gaps in the range cost nothing in time.</text>
+  <text x="40" y="462" fill="#333" font-size="12">&#x2022; The outer loop runs k times (O(k)), the inner while writes each element once (O(n) total). Combined: <tspan font-weight="bold">O(n + k)</tspan>.</text>
+</svg>
