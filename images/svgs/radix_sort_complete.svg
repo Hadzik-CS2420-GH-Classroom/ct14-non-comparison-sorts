@@ -23,7 +23,7 @@
   <rect x="412" y="70" width="46" height="26" rx="4" fill="#6a1b9a"/><text x="435" y="88" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">2</text>
   <rect x="464" y="70" width="46" height="26" rx="4" fill="#6a1b9a"/><text x="487" y="88" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">66</text>
 
-  <!-- ===== PASS 1: Ones digit ===== -->
+  <!-- PASS 1: Ones digit -->
   <rect x="20" y="114" width="860" height="130" rx="8" fill="#fff" stroke="#6a1b9a" stroke-width="1.5"/>
   <text x="35" y="136" fill="#6a1b9a" font-size="14" font-weight="bold">Pass 1: Sort by ones digit</text>
   <text x="280" y="136" fill="#888" font-size="11">digit = value % 10</text>
@@ -44,7 +44,7 @@
 
   <text x="40" y="230" fill="#888" font-size="11">Ones digits in order: 0, 0, 2, 2, 4, 5, 5, 6 &#x2714;</text>
 
-  <!-- ===== PASS 2: Tens digit ===== -->
+  <!-- PASS 2: Tens digit -->
   <rect x="20" y="250" width="860" height="130" rx="8" fill="#fff" stroke="#8e44ad" stroke-width="1.5"/>
   <text x="35" y="272" fill="#8e44ad" font-size="14" font-weight="bold">Pass 2: Sort by tens digit</text>
   <text x="280" y="272" fill="#888" font-size="11">digit = (value / 10) % 10</text>
@@ -63,7 +63,7 @@
 
   <text x="40" y="366" fill="#888" font-size="11">Tens digits in order: 0, 0, 2, 4, 6, 7, 7, 9 &#x2714; &nbsp;&nbsp;(stability preserved ones-digit ordering within same tens digit)</text>
 
-  <!-- ===== PASS 3: Hundreds digit ===== -->
+  <!-- PASS 3: Hundreds digit -->
   <rect x="20" y="386" width="860" height="130" rx="8" fill="#fff" stroke="#4a148c" stroke-width="1.5"/>
   <text x="35" y="408" fill="#4a148c" font-size="14" font-weight="bold">Pass 3: Sort by hundreds digit</text>
   <text x="300" y="408" fill="#888" font-size="11">digit = (value / 100) % 10</text>
