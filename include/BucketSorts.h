@@ -5,7 +5,7 @@
 #include <string>
 
 // =============================================================================
-// CT14: Bucket Sort Algorithms (CCD 2.8.4)
+// CT14: Non-Comparison Sorts (CCD 2.8.4)
 // =============================================================================
 //
 // ? SEE DIAGRAM: images/svgs/bucket_sorts_overview.svg -- the three non-comparison sorts at a high level

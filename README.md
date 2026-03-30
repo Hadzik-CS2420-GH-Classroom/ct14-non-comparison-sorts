@@ -1,4 +1,4 @@
-# CT14: Bucket Sort Algorithms
+# CT14: Non-Comparison Sorts
 
 ## Overview
 

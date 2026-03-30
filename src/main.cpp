@@ -3,7 +3,7 @@
 #include <vector>
 
 int main() {
-    std::cout << "=== CT14: Bucket Sort Algorithms ===\n\n";
+    std::cout << "=== CT14: Non-Comparison Sorts ===\n\n";
 
     // --- Counting Sort ---
     std::vector<int> data1 = {4, 2, 7, 1, 9, 3, 5, 8, 2, 6};
