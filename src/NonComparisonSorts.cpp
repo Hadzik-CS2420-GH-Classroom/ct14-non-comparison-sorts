@@ -5,6 +5,10 @@
 // ---------------------------------------------------------------------------
 // Counting Sort
 // ---------------------------------------------------------------------------
+//
+// ? SEE DIAGRAM: cpp_diagrams.md #1 -- Steps 1a, 1b, 1c (Count Phase)
+// ? SEE DIAGRAM: cpp_diagrams.md #2 -- Step 2 (Placement Phase)
+//
 void counting_sort(std::vector<int>& data) {
     // TODO: Implement counting sort
     //   1. Find the min and max values
@@ -16,6 +20,10 @@ void counting_sort(std::vector<int>& data) {
 // ---------------------------------------------------------------------------
 // Bucket Sort
 // ---------------------------------------------------------------------------
+//
+// ? SEE DIAGRAM: cpp_diagrams.md #3 -- Steps 1a, 1b (Distribution Phase)
+// ? SEE DIAGRAM: cpp_diagrams.md #4 -- Steps 2-3 (Sort + Concatenate)
+//
 void bucket_sort(std::vector<int>& data, int num_buckets) {
     // TODO: Implement bucket sort
     //   1. Find the min and max values to determine bucket ranges
@@ -26,8 +34,12 @@ void bucket_sort(std::vector<int>& data, int num_buckets) {
 }
 
 // ---------------------------------------------------------------------------
-// Radix Sort
+// Radix Sort (LSD)
 // ---------------------------------------------------------------------------
+//
+// ? SEE DIAGRAM: cpp_diagrams.md #5 -- Step 0 + Pass 1 Detail
+// ? SEE DIAGRAM: cpp_diagrams.md #6 -- Passes 2-3 (Stability in Action)
+//
 void radix_sort(std::vector<int>& data) {
     // TODO: Implement radix sort (LSD)
     //   1. Find the maximum value to determine the number of digits
