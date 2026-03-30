@@ -1,69 +1,114 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" font-family="'Segoe UI', Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" font-family="'Segoe UI', Arial, sans-serif">
   <rect width="100%" height="100%" fill="white"/>
 
-  <text x="450" y="28" text-anchor="middle" fill="#1a1a1a" font-size="20" font-weight="bold">Counting Sort &#x2014; Code Walkthrough</text>
-  <text x="450" y="48" text-anchor="middle" fill="#777" font-size="12">BucketSorts.cpp::counting_sort() &#x2014; three steps: find range, tally, place</text>
+  <text x="450" y="28" text-anchor="middle" fill="#1a1a1a" font-size="20" font-weight="bold">Counting Sort &#x2014; Steps 1a, 1b, 1c (Count Phase)</text>
+  <text x="450" y="48" text-anchor="middle" fill="#777" font-size="12">BucketSorts.cpp::counting_sort() &#x2014; find range, allocate count array, tally each element</text>
 
   <!-- Code block (left) -->
-  <rect x="20" y="64" width="420" height="320" rx="8" fill="#1e1e2e" stroke="#45475a" stroke-width="1.5"/>
+  <rect x="20" y="64" width="380" height="220" rx="8" fill="#1e1e2e" stroke="#45475a" stroke-width="1.5"/>
 
-  <!-- Step 1a highlight -->
-  <rect x="20" y="72" width="420" height="50" fill="#89b4fa18"/>
+  <rect x="20" y="72" width="380" height="52" fill="#89b4fa18"/>
   <text x="35" y="88" fill="#89b4fa" font-size="11" font-weight="bold">Step 1a: Find min and max O(n)</text>
-  <text x="35" y="106" fill="#cdd6f4" font-size="11"><tspan fill="#cba6f7">int</tspan> min_val = *min_element(...);</text>
-  <text x="35" y="120" fill="#cdd6f4" font-size="11"><tspan fill="#cba6f7">int</tspan> max_val = *max_element(...);</text>
+  <text x="35" y="106" fill="#cdd6f4" font-size="11"><tspan fill="#cba6f7">int</tspan> min_val = *min_element(data.begin(), data.end());</text>
+  <text x="35" y="120" fill="#cdd6f4" font-size="11"><tspan fill="#cba6f7">int</tspan> max_val = *max_element(data.begin(), data.end());</text>
 
-  <!-- Step 1b highlight -->
-  <rect x="20" y="128" width="420" height="42" fill="#a6e3a118"/>
+  <rect x="20" y="128" width="380" height="42" fill="#a6e3a118"/>
   <text x="35" y="144" fill="#a6e3a1" font-size="11" font-weight="bold">Step 1b: Allocate count array O(k)</text>
   <text x="35" y="162" fill="#cdd6f4" font-size="11"><tspan fill="#cba6f7">int</tspan> k = max_val - min_val + <tspan fill="#fab387">1</tspan>;</text>
+  <text x="35" y="178" fill="#cdd6f4" font-size="11">vector&lt;<tspan fill="#cba6f7">int</tspan>&gt; count(k, <tspan fill="#fab387">0</tspan>);</text>
 
-  <!-- Step 1c highlight -->
-  <rect x="20" y="176" width="420" height="54" fill="#f38ba818"/>
-  <text x="35" y="192" fill="#f38ba8" font-size="11" font-weight="bold">Step 1c: Tally O(n)</text>
-  <text x="35" y="210" fill="#cdd6f4" font-size="11"><tspan fill="#cba6f7">for</tspan> (<tspan fill="#cba6f7">int</tspan> val : data)</text>
-  <text x="50" y="226" fill="#cdd6f4" font-size="11">count[val - min_val]++;</text>
+  <rect x="20" y="186" width="380" height="52" fill="#f38ba818"/>
+  <text x="35" y="202" fill="#f38ba8" font-size="11" font-weight="bold">Step 1c: Tally O(n)</text>
+  <text x="35" y="220" fill="#cdd6f4" font-size="11"><tspan fill="#cba6f7">for</tspan> (<tspan fill="#cba6f7">int</tspan> val : data)</text>
+  <text x="50" y="236" fill="#cdd6f4" font-size="11">count[val - min_val]++;</text>
 
-  <!-- Step 2 highlight -->
-  <rect x="20" y="236" width="420" height="84" fill="#fab38718"/>
-  <text x="35" y="254" fill="#fab387" font-size="11" font-weight="bold">Step 2: Place elements O(n + k)</text>
-  <text x="35" y="272" fill="#cdd6f4" font-size="11"><tspan fill="#cba6f7">int</tspan> idx = <tspan fill="#fab387">0</tspan>;</text>
-  <text x="35" y="290" fill="#cdd6f4" font-size="11"><tspan fill="#cba6f7">for</tspan> (<tspan fill="#cba6f7">int</tspan> i = <tspan fill="#fab387">0</tspan>; i &lt; k; ++i)</text>
-  <text x="50" y="308" fill="#cdd6f4" font-size="11"><tspan fill="#cba6f7">while</tspan> (count[i]-- &gt; <tspan fill="#fab387">0</tspan>)</text>
-  <text x="65" y="326" fill="#cdd6f4" font-size="11">data[idx++] = i + min_val;</text>
+  <text x="35" y="268" fill="#6c7086" font-size="11" font-style="italic">// index formula: count[value - min]</text>
+  <text x="35" y="282" fill="#6c7086" font-size="11" font-style="italic">// val=14, min=11: count[14-11] = count[3]</text>
 
-  <text x="35" y="358" fill="#6c7086" font-size="11" font-style="italic">// No comparisons! Just count and place.</text>
-  <text x="35" y="374" fill="#6c7086" font-size="11" font-style="italic">// Total: O(n + k) time, O(k) space</text>
+  <!-- Right panel -->
+  <text x="420" y="82" fill="#2e7d32" font-size="13" font-weight="bold">Input: [14, 12, 17, 11, 14, 12]</text>
 
-  <!-- Visual (right) -->
-  <text x="460" y="82" fill="#2e7d32" font-size="13" font-weight="bold">Input: [14, 12, 17, 11, 14, 12]</text>
+  <!-- Step 1a result -->
+  <rect x="420" y="96" width="460" height="30" rx="6" fill="#eaf4fb" stroke="#5dade2" stroke-width="1"/>
+  <text x="430" y="116" fill="#2980b9" font-size="12" font-weight="bold">1a:</text>
+  <text x="460" y="116" fill="#555" font-size="12">Scan all 6 elements. min=<tspan font-weight="bold" fill="#0d47a1">11</tspan>, max=<tspan font-weight="bold" fill="#0d47a1">17</tspan></text>
 
-  <rect x="460" y="96" width="410" height="44" rx="6" fill="#eaf4fb" stroke="#5dade2" stroke-width="1"/>
-  <text x="470" y="114" fill="#2980b9" font-size="11" font-weight="bold">1a: min=11, max=17</text>
-  <text x="470" y="130" fill="#2980b9" font-size="11">1b: k = 17 - 11 + 1 = 7 slots</text>
+  <!-- Step 1b result -->
+  <rect x="420" y="132" width="460" height="58" rx="6" fill="#e8f5e9" stroke="#27ae60" stroke-width="1"/>
+  <text x="430" y="152" fill="#1b5e20" font-size="12" font-weight="bold">1b:</text>
+  <text x="460" y="152" fill="#555" font-size="12">k = 17 - 11 + 1 = <tspan font-weight="bold" fill="#c62828">7</tspan> slots (not 17!)</text>
+  <!-- Empty count array -->
+  <text x="438" y="178" fill="#888" font-size="10">val:</text>
+  <text x="480" y="178" text-anchor="middle" fill="#888" font-size="10">11</text>
+  <text x="520" y="178" text-anchor="middle" fill="#888" font-size="10">12</text>
+  <text x="560" y="178" text-anchor="middle" fill="#888" font-size="10">13</text>
+  <text x="600" y="178" text-anchor="middle" fill="#888" font-size="10">14</text>
+  <text x="640" y="178" text-anchor="middle" fill="#888" font-size="10">15</text>
+  <text x="680" y="178" text-anchor="middle" fill="#888" font-size="10">16</text>
+  <text x="720" y="178" text-anchor="middle" fill="#888" font-size="10">17</text>
 
-  <rect x="460" y="148" width="410" height="88" rx="6" fill="#fef9e7" stroke="#e67e22" stroke-width="1"/>
-  <text x="470" y="166" fill="#e67e22" font-size="11" font-weight="bold">1c: Tally each element</text>
-  <text x="470" y="184" fill="#555" font-size="10">14: idx=3, count[3]++</text>
-  <text x="620" y="184" fill="#555" font-size="10">12: idx=1, count[1]++</text>
-  <text x="470" y="200" fill="#555" font-size="10">17: idx=6, count[6]++</text>
-  <text x="620" y="200" fill="#555" font-size="10">11: idx=0, count[0]++</text>
-  <text x="470" y="216" fill="#555" font-size="10">14: idx=3, count[3]++</text>
-  <text x="620" y="216" fill="#555" font-size="10">12: idx=1, count[1]++</text>
-  <text x="470" y="230" fill="#888" font-size="10">counts: [1, 2, 0, 2, 0, 0, 1]</text>
+  <!-- Step 1c tally table -->
+  <rect x="420" y="196" width="460" height="200" rx="6" fill="#fef9e7" stroke="#e67e22" stroke-width="1"/>
+  <text x="430" y="216" fill="#e67e22" font-size="12" font-weight="bold">1c: Tally each element</text>
 
-  <rect x="460" y="244" width="410" height="60" rx="6" fill="#e8f5e9" stroke="#27ae60" stroke-width="1"/>
-  <text x="470" y="262" fill="#1b5e20" font-size="11" font-weight="bold">Step 2: Place from counts</text>
-  <text x="470" y="280" fill="#555" font-size="10">count[0]=1: write 11 | count[1]=2: write 12,12 | count[3]=2: write 14,14 | count[6]=1: write 17</text>
-  <rect x="470" y="286" width="34" height="18" rx="3" fill="#27ae60"/><text x="487" y="300" text-anchor="middle" fill="#fff" font-size="10">11</text>
-  <rect x="508" y="286" width="34" height="18" rx="3" fill="#27ae60"/><text x="525" y="300" text-anchor="middle" fill="#fff" font-size="10">12</text>
-  <rect x="546" y="286" width="34" height="18" rx="3" fill="#27ae60"/><text x="563" y="300" text-anchor="middle" fill="#fff" font-size="10">12</text>
-  <rect x="584" y="286" width="34" height="18" rx="3" fill="#27ae60"/><text x="601" y="300" text-anchor="middle" fill="#fff" font-size="10">14</text>
-  <rect x="622" y="286" width="34" height="18" rx="3" fill="#27ae60"/><text x="639" y="300" text-anchor="middle" fill="#fff" font-size="10">14</text>
-  <rect x="660" y="286" width="34" height="18" rx="3" fill="#27ae60"/><text x="677" y="300" text-anchor="middle" fill="#fff" font-size="10">17</text>
+  <!-- Column headers -->
+  <text x="430" y="236" fill="#555" font-size="10" font-weight="bold">Element</text>
+  <text x="510" y="236" fill="#555" font-size="10" font-weight="bold">index = val - min</text>
+  <text x="660" y="236" fill="#555" font-size="10" font-weight="bold">Action</text>
+  <text x="790" y="236" fill="#555" font-size="10" font-weight="bold">count[]</text>
+
+  <!-- Row 1: 14 -->
+  <text x="430" y="256" fill="#1565c0" font-size="11" font-weight="bold">14</text>
+  <text x="510" y="256" fill="#555" font-size="11">14 - 11 = <tspan fill="#e65100" font-weight="bold">3</tspan></text>
+  <text x="660" y="256" fill="#555" font-size="11">count[3]: 0&#x2192;1</text>
+  <text x="790" y="256" fill="#888" font-size="10">[0,0,0,<tspan fill="#e65100" font-weight="bold">1</tspan>,0,0,0]</text>
+
+  <!-- Row 2: 12 -->
+  <text x="430" y="276" fill="#1565c0" font-size="11" font-weight="bold">12</text>
+  <text x="510" y="276" fill="#555" font-size="11">12 - 11 = <tspan fill="#e65100" font-weight="bold">1</tspan></text>
+  <text x="660" y="276" fill="#555" font-size="11">count[1]: 0&#x2192;1</text>
+  <text x="790" y="276" fill="#888" font-size="10">[0,<tspan fill="#e65100" font-weight="bold">1</tspan>,0,1,0,0,0]</text>
+
+  <!-- Row 3: 17 -->
+  <text x="430" y="296" fill="#1565c0" font-size="11" font-weight="bold">17</text>
+  <text x="510" y="296" fill="#555" font-size="11">17 - 11 = <tspan fill="#e65100" font-weight="bold">6</tspan></text>
+  <text x="660" y="296" fill="#555" font-size="11">count[6]: 0&#x2192;1</text>
+  <text x="790" y="296" fill="#888" font-size="10">[0,1,0,1,0,0,<tspan fill="#e65100" font-weight="bold">1</tspan>]</text>
+
+  <!-- Row 4: 11 -->
+  <text x="430" y="316" fill="#1565c0" font-size="11" font-weight="bold">11</text>
+  <text x="510" y="316" fill="#555" font-size="11">11 - 11 = <tspan fill="#e65100" font-weight="bold">0</tspan></text>
+  <text x="660" y="316" fill="#555" font-size="11">count[0]: 0&#x2192;1</text>
+  <text x="790" y="316" fill="#888" font-size="10">[<tspan fill="#e65100" font-weight="bold">1</tspan>,1,0,1,0,0,1]</text>
+
+  <!-- Row 5: 14 dup -->
+  <text x="430" y="336" fill="#1565c0" font-size="11" font-weight="bold">14</text>
+  <text x="510" y="336" fill="#555" font-size="11">14 - 11 = <tspan fill="#e65100" font-weight="bold">3</tspan></text>
+  <text x="660" y="336" fill="#8e44ad" font-size="11">count[3]: 1&#x2192;<tspan font-weight="bold">2</tspan></text>
+  <text x="790" y="336" fill="#888" font-size="10">[1,1,0,<tspan fill="#e65100" font-weight="bold">2</tspan>,0,0,1]</text>
+
+  <!-- Row 6: 12 dup -->
+  <text x="430" y="356" fill="#1565c0" font-size="11" font-weight="bold">12</text>
+  <text x="510" y="356" fill="#555" font-size="11">12 - 11 = <tspan fill="#e65100" font-weight="bold">1</tspan></text>
+  <text x="660" y="356" fill="#8e44ad" font-size="11">count[1]: 1&#x2192;<tspan font-weight="bold">2</tspan></text>
+  <text x="790" y="356" fill="#888" font-size="10">[1,<tspan fill="#e65100" font-weight="bold">2</tspan>,0,2,0,0,1]</text>
+
+  <!-- Final count array -->
+  <text x="430" y="386" fill="#2e7d32" font-size="11" font-weight="bold">Final count array:</text>
+  <rect x="490" y="372" width="30" height="22" rx="3" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1"/><text x="505" y="388" text-anchor="middle" fill="#2e7d32" font-size="11" font-weight="bold">1</text>
+  <rect x="524" y="372" width="30" height="22" rx="3" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1"/><text x="539" y="388" text-anchor="middle" fill="#2e7d32" font-size="11" font-weight="bold">2</text>
+  <rect x="558" y="372" width="30" height="22" rx="3" fill="#f5f5f5" stroke="#bbb" stroke-width="1"/><text x="573" y="388" text-anchor="middle" fill="#bbb" font-size="11">0</text>
+  <rect x="592" y="372" width="30" height="22" rx="3" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1"/><text x="607" y="388" text-anchor="middle" fill="#2e7d32" font-size="11" font-weight="bold">2</text>
+  <rect x="626" y="372" width="30" height="22" rx="3" fill="#f5f5f5" stroke="#bbb" stroke-width="1"/><text x="641" y="388" text-anchor="middle" fill="#bbb" font-size="11">0</text>
+  <rect x="660" y="372" width="30" height="22" rx="3" fill="#f5f5f5" stroke="#bbb" stroke-width="1"/><text x="675" y="388" text-anchor="middle" fill="#bbb" font-size="11">0</text>
+  <rect x="694" y="372" width="30" height="22" rx="3" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1"/><text x="709" y="388" text-anchor="middle" fill="#2e7d32" font-size="11" font-weight="bold">1</text>
 
   <!-- Key insight -->
-  <rect x="20" y="400" width="860" height="66" rx="10" fill="#f4ecf7" stroke="#6a1b9a" stroke-width="1.5"/>
-  <text x="40" y="424" fill="#333" font-size="12">&#x2022; <tspan font-weight="bold">Steps 1a + 1c are O(n)</tspan>, Step 1b + Step 2 placement loop is O(k). Total: O(n + k). No nested loops, no comparisons.</text>
-  <text x="40" y="446" fill="#333" font-size="12">&#x2022; The count array is a <tspan font-weight="bold">frequency table</tspan>: count[value - min] tells you exactly how many of each value to write.</text>
+  <rect x="20" y="414" width="860" height="50" rx="10" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="1.5"/>
+  <text x="450" y="440" text-anchor="middle" fill="#333" font-size="12">After Step 1c: the count array is a <tspan font-weight="bold">frequency table</tspan>. count[i] = how many times value (min + i) appears. Ready for Step 2 (placement).</text>
+
+  <!-- Arrow to next SVG -->
+  <rect x="20" y="478" width="860" height="36" rx="8" fill="#e3f2fd" stroke="#1565c0" stroke-width="1"/>
+  <text x="450" y="502" text-anchor="middle" fill="#1565c0" font-size="13" font-weight="bold">&#x2192; Continues in: Counting Sort Step 2 (Placement Phase)</text>
+  <text x="450" y="518" text-anchor="middle" fill="#888" font-size="11">Next SVG walks through reading the count array left-to-right to build the sorted output.</text>
 </svg>
