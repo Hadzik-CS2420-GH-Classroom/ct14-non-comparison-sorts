@@ -19,7 +19,7 @@ Conceptual diagrams referenced from `BucketSorts.h`.
 ---
 
 ## 3. Counting Sort -- Complete Walkthrough
-*`BucketSorts.h` -- step-by-step on [4, 2, 7, 1, 4, 2] showing count array and placement*
+*`BucketSorts.h` -- step-by-step on [14, 12, 17, 11, 14, 12] showing count array and placement (min=11, max=17, k=7)*
 
 ![Counting Sort -- Complete Walkthrough](svgs/counting_sort_complete.svg)
 

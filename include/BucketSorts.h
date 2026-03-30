@@ -1,5 +1,4 @@
-#ifndef BUCKET_SORTS_H
-#define BUCKET_SORTS_H
+#pragma once
 
 #include <vector>
 #include <string>
@@ -8,78 +7,56 @@
 // CT14: Non-Comparison Sorts (CCD 2.8.4)
 // =============================================================================
 //
-// ? SEE DIAGRAM: images/svgs/bucket_sorts_overview.svg -- the three non-comparison sorts at a high level
-// ? SEE DIAGRAM: images/svgs/bucket_sorts_comparison.svg -- side-by-side time, space, stability
+// ? SEE DIAGRAM: header_diagrams.md #1 -- the three non-comparison sorts overview
+// ? SEE DIAGRAM: header_diagrams.md #2 -- what is k? the value range tradeoff
+// ? SEE DIAGRAM: header_diagrams.md #6 -- side-by-side comparison table
 //
-// Non-comparison sorts that exploit properties of the data (integer keys,
-// limited range) to sort faster than O(n log n).
+// Non-comparison sorts exploit integer key properties (value range, digit
+// structure) to sort faster than O(n log n). They never compare two elements
+// directly -- instead they use values as indices.
 //
-// Design decisions:
-//   - Free functions taking std::vector<int>& (modify in-place, no class needed)
-//   - Ascending order (smallest first)
+// Design: free functions taking std::vector<int>& (ascending order, in-place).
 // =============================================================================
 
 // ---------------------------------------------------------------------------
 // Counting Sort
 // ---------------------------------------------------------------------------
 //
-// ? SEE DIAGRAM: images/svgs/counting_sort_complete.svg -- step-by-step on [4,2,7,1,4,2]
+// ? SEE DIAGRAM: header_diagrams.md #3 -- complete walkthrough on [14,12,17,11,14,12]
 //
-// ! DISCUSSION: How counting sort works.
-//   - Count occurrences of each value in the input
-//   - Use the counts to place elements directly into their sorted position
-//   - Only works when the range of values (k) is known and reasonable
+// Count occurrences of each value, then place directly.
+// Time: O(n + k) where k = value range (max - min + 1)
+// Space: O(k) for the count array
+// Stable: Yes
 //
-// ! DISCUSSION: Complexity and properties.
-//   - Time: O(n + k) where k is the range of input values
-//   - Space: O(k) for the count array
-//   - Stable: Yes (with the standard implementation)
-//   - Not a comparison sort -- never compares two elements directly
-//
-// TODO: Implement counting_sort
 void counting_sort(std::vector<int>& data);
 
 // ---------------------------------------------------------------------------
 // Bucket Sort
 // ---------------------------------------------------------------------------
 //
-// ? SEE DIAGRAM: images/svgs/bucket_sort_complete.svg -- distributing into 3 buckets, sort, concatenate
+// ? SEE DIAGRAM: header_diagrams.md #4 -- complete walkthrough on [42,15,73,28,91,5]
 //
-// ! DISCUSSION: How bucket sort works.
-//   - Distribute elements into a fixed number of "buckets" by value range
-//   - Sort each bucket individually (often with insertion sort)
-//   - Concatenate the sorted buckets back into the original array
+// Distribute into range-based buckets, sort each bucket, concatenate.
+// Time: O(n + k) avg, O(n^2) worst (all in one bucket)
+// Space: O(n + k)
+// Stable: depends on per-bucket sort (stable if using insertion sort)
 //
-// ! DISCUSSION: Complexity and properties.
-//   - Time: O(n + k) average when data is uniformly distributed
-//   - Worst case: O(n^2) if all elements land in one bucket
-//   - Space: O(n + k) for the buckets
-//   - Stable: Yes (if the per-bucket sort is stable)
-//
-// TODO: Implement bucket_sort
 void bucket_sort(std::vector<int>& data, int num_buckets = 10);
 
 // ---------------------------------------------------------------------------
-// Radix Sort
+// Radix Sort (LSD)
 // ---------------------------------------------------------------------------
 //
-// ? SEE DIAGRAM: images/svgs/radix_sort_complete.svg -- digit-by-digit on [170,45,75,90,802,24,2,66]
+// ? SEE DIAGRAM: header_diagrams.md #5 -- digit-by-digit on [170,45,75,90,802,24,2,66]
 //
-// ! DISCUSSION: How radix sort works.
-//   - Sort by each digit, starting from the least significant digit (LSD)
-//   - Uses counting sort as a subroutine for each digit position
-//   - After processing all digits, the array is fully sorted
+// Sort digit-by-digit from least significant to most, using stable
+// counting sort at each digit position.
+// Time: O(d * (n + k)) where d = max digits, k = base (10)
+// Space: O(n + k)
+// Stable: Yes (requires stable sub-sort at each digit)
 //
-// ! DISCUSSION: Complexity and properties.
-//   - Time: O(d * (n + k)) where d = number of digits, k = base (10)
-//   - Space: O(n + k)
-//   - Stable: Yes (relies on stable counting sort at each digit)
-//   - Works on non-negative integers
-//
-// TODO: Implement radix_sort
 void radix_sort(std::vector<int>& data);
 
 // Utility
 void print_vector(const std::vector<int>& data, const std::string& label = "");
-
-#endif // BUCKET_SORTS_H
