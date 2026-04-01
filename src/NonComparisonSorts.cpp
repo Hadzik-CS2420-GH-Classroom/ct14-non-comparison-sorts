@@ -14,6 +14,7 @@ void counting_sort(std::vector<int>& data) {
     if (data.size() <= 1) return;
 
     // Step 1a: Find min and max -- O(n)
+    // min_element returns an iterator (pointer-like); * dereferences it to get the int value
     int min_val = *std::min_element(data.begin(), data.end());
     int max_val = *std::max_element(data.begin(), data.end());
 
